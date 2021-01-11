@@ -25,6 +25,10 @@ public class FibonacciForkJoin extends ForkJoinTask<Long> {
 
     @Override
     protected boolean exec() {
+        if (number <= 5) {
+            sum = fibonacci(number);
+            return true;
+        }
         FibonacciForkJoin firstTask = new FibonacciForkJoin(number - 1);
         FibonacciForkJoin secondTask = new FibonacciForkJoin(number - 2);
         firstTask.fork();
